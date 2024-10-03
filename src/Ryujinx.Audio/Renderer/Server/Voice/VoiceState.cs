@@ -3,6 +3,7 @@ using Ryujinx.Audio.Renderer.Common;
 using Ryujinx.Audio.Renderer.Dsp.State;
 using Ryujinx.Audio.Renderer.Parameter;
 using Ryujinx.Audio.Renderer.Server.MemoryPool;
+using Ryujinx.Common.Logging;
 using Ryujinx.Common.Memory;
 using Ryujinx.Common.Utilities;
 using System;
@@ -602,7 +603,11 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
                         {
                             for (int y = 0; y < ChannelsCount; y++)
                             {
-                                Debug.Assert(!voiceUpdateStates[y].Span[0].IsWaveBufferValid[i]);
+                                if (!voiceUpdateStates[y].Span[0].IsWaveBufferValid[i])
+                                {
+                                    Logger.Error?.Print(LogClass.AudioRenderer, "Wave buffer is invalid!");
+                                    return false;
+                                }
 
                                 voiceUpdateStates[y].Span[0].IsWaveBufferValid[i] = true;
                             }

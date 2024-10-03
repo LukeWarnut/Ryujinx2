@@ -5,7 +5,7 @@
     <RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Version>1.0.0-dirty</Version>
+    <Version>2.0.0-dirty</Version>
     <DefineConstants Condition=" '$(ExtraDefineConstants)' != '' ">$(DefineConstants);$(ExtraDefineConstants)</DefineConstants>
     <!-- As we already provide GTK3 on Windows via GtkSharp.Dependencies this is redundant. -->
     <SkipGtkInstall>true</SkipGtkInstall>
