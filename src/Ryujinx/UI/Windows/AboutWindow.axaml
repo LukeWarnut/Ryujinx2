@@ -232,26 +232,6 @@
                         ToolTip.Tip="{locale:Locale AboutRyujinxMaintainersContentTooltipMessage}" />
                 </Button>
             </StackPanel>
-            <StackPanel
-                Grid.Row="2"
-                Margin="0,10,0,0"
-                Spacing="2">
-                <TextBlock
-                    FontSize="15"
-                    FontWeight="Bold"
-                    Text="{locale:Locale AboutRyujinxSupprtersTitle}" />
-                <ScrollViewer
-                    Height="70"
-                    HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Visible">
-                    <TextBlock
-                        Name="SupportersTextBlock"
-                        VerticalAlignment="Top"
-                        FontSize="10"
-                        Text="{Binding Supporters}"
-                        TextWrapping="Wrap" />
-                </ScrollViewer>
-            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

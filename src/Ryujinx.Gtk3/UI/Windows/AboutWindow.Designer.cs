@@ -1,4 +1,4 @@
-﻿using Gtk;
+using Gtk;
 using Pango;
 using Ryujinx.UI.Common.Configuration;
 using System.Reflection;
@@ -21,10 +21,6 @@ namespace Ryujinx.UI.Windows
         private EventBox _amiiboApiLink;
         private Label _amiiboApiLinkLabel;
         private Box _socialBox;
-        private EventBox _patreonEventBox;
-        private Box _patreonBox;
-        private Image _patreonLogo;
-        private Label _patreonLabel;
         private EventBox _githubEventBox;
         private Box _githubBox;
         private Image _githubLogo;
@@ -45,9 +41,6 @@ namespace Ryujinx.UI.Windows
         private TextView _createdByText;
         private EventBox _contributorsEventBox;
         private Label _contributorsLinkLabel;
-        private Label _patreonNamesLabel;
-        private ScrolledWindow _patreonNamesScrolled;
-        private TextView _patreonNamesText;
         private EventBox _changelogEventBox;
         private Label _changelogLinkLabel;
 
@@ -207,36 +200,6 @@ namespace Ryujinx.UI.Windows
             };
 
             //
-            // _patreonEventBox
-            //
-            _patreonEventBox = new EventBox()
-            {
-                TooltipText = "Click to open the Ryujinx Patreon page in your default browser.",
-            };
-            _patreonEventBox.ButtonPressEvent += PatreonButton_Pressed;
-
-            //
-            // _patreonBox
-            //
-            _patreonBox = new Box(Orientation.Vertical, 0);
-
-            //
-            // _patreonLogo
-            //
-            _patreonLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Patreon_Light.png", 30, 30))
-            {
-                Margin = 10,
-            };
-
-            //
-            // _patreonLabel
-            //
-            _patreonLabel = new Label("Patreon")
-            {
-                Justify = Justification.Center,
-            };
-
-            //
             // _githubEventBox
             //
             _githubEventBox = new EventBox()
@@ -358,7 +321,6 @@ namespace Ryujinx.UI.Windows
             // _aboutDescriptionLabel
             //
             _aboutDescriptionLabel = new Label("Ryujinx is an emulator for the Nintendo Switch™.\n" +
-                                               "Please support us on Patreon.\n" +
                                                "Get all the latest news on our Twitter or Discord.\n" +
                                                "Developers interested in contributing can find out more on our GitHub or Discord.")
             {
@@ -408,39 +370,6 @@ namespace Ryujinx.UI.Windows
             };
             _contributorsLinkLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
 
-            //
-            // _patreonNamesLabel
-            //
-            _patreonNamesLabel = new Label("Supported on Patreon by :")
-            {
-                Halign = Align.Start,
-                Attributes = new AttrList(),
-            };
-            _patreonNamesLabel.Attributes.Insert(new Pango.AttrWeight(Weight.Bold));
-            _patreonNamesLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
-
-            //
-            // _patreonNamesScrolled
-            //
-            _patreonNamesScrolled = new ScrolledWindow()
-            {
-                Margin = 15,
-                MarginEnd = 30,
-                Expand = true,
-                ShadowType = ShadowType.In,
-            };
-            _patreonNamesScrolled.SetPolicy(PolicyType.Never, PolicyType.Automatic);
-
-            //
-            // _patreonNamesText
-            //
-            _patreonNamesText = new TextView()
-            {
-                WrapMode = Gtk.WrapMode.Word,
-            };
-            _patreonNamesText.Buffer.Text = "Loading...";
-            _patreonNamesText.SetProperty("editable", new GLib.Value(false));
-
             ShowComponent();
         }
 
@@ -458,10 +387,6 @@ namespace Ryujinx.UI.Windows
 
             _amiiboApiLink.Add(_amiiboApiLinkLabel);
 
-            _patreonBox.Add(_patreonLogo);
-            _patreonBox.Add(_patreonLabel);
-            _patreonEventBox.Add(_patreonBox);
-
             _githubBox.Add(_githubLogo);
             _githubBox.Add(_githubLabel);
             _githubEventBox.Add(_githubBox);
@@ -474,7 +399,6 @@ namespace Ryujinx.UI.Windows
             _twitterBox.Add(_twitterLabel);
             _twitterEventBox.Add(_twitterBox);
 
-            _socialBox.Add(_patreonEventBox);
             _socialBox.Add(_githubEventBox);
             _socialBox.Add(_discordEventBox);
             _socialBox.Add(_twitterEventBox);
@@ -489,15 +413,12 @@ namespace Ryujinx.UI.Windows
             _leftBox.Add(_socialBox);
 
             _contributorsEventBox.Add(_contributorsLinkLabel);
-            _patreonNamesScrolled.Add(_patreonNamesText);
 
             _rightBox.Add(_aboutLabel);
             _rightBox.Add(_aboutDescriptionLabel);
             _rightBox.Add(_createdByLabel);
             _rightBox.Add(_createdByText);
             _rightBox.Add(_contributorsEventBox);
-            _rightBox.Add(_patreonNamesLabel);
-            _rightBox.Add(_patreonNamesScrolled);
 
             _mainBox.Add(_leftBox);
             _mainBox.Add(_separator);

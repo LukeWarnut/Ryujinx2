@@ -14,29 +14,6 @@ namespace Ryujinx.UI.Windows
         {
             Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(OpenHelper)), "Ryujinx.UI.Common.Resources.Logo_Ryujinx.png");
             InitializeComponent();
-
-            _ = DownloadPatronsJson();
-        }
-
-        private async Task DownloadPatronsJson()
-        {
-            if (!NetworkInterface.GetIsNetworkAvailable())
-            {
-                _patreonNamesText.Buffer.Text = "Connection Error.";
-            }
-
-            HttpClient httpClient = new();
-
-            try
-            {
-                string patreonJsonString = await httpClient.GetStringAsync("https://patreon.ryujinx.org/");
-
-                _patreonNamesText.Buffer.Text = string.Join(", ", JsonHelper.Deserialize(patreonJsonString, CommonJsonContext.Default.StringArray));
-            }
-            catch
-            {
-                _patreonNamesText.Buffer.Text = "API Error.";
-            }
         }
 
         //
@@ -50,11 +27,6 @@ namespace Ryujinx.UI.Windows
         private void AmiiboApiButton_Pressed(object sender, ButtonPressEventArgs args)
         {
             OpenHelper.OpenUrl("https://amiiboapi.com");
-        }
-
-        private void PatreonButton_Pressed(object sender, ButtonPressEventArgs args)
-        {
-            OpenHelper.OpenUrl("https://www.patreon.com/ryujinx");
         }
 
         private void GitHubButton_Pressed(object sender, ButtonPressEventArgs args)

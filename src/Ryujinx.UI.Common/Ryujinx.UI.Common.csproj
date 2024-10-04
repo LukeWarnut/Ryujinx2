@@ -18,7 +18,6 @@
     <None Remove="Resources\Logo_Amiibo.png" />
     <None Remove="Resources\Logo_Discord.png" />
     <None Remove="Resources\Logo_GitHub.png" />
-    <None Remove="Resources\Logo_Patreon.png" />
     <None Remove="Resources\Logo_Ryujinx.png" />
     <None Remove="Resources\Logo_Twitter.png" />
   </ItemGroup>
@@ -39,8 +38,6 @@
     <EmbeddedResource Include="Resources\Logo_Discord_Light.png" />
     <EmbeddedResource Include="Resources\Logo_GitHub_Dark.png" />
     <EmbeddedResource Include="Resources\Logo_GitHub_Light.png" />
-    <EmbeddedResource Include="Resources\Logo_Patreon_Dark.png" />
-    <EmbeddedResource Include="Resources\Logo_Patreon_Light.png" />
     <EmbeddedResource Include="Resources\Logo_Twitter_Dark.png" />
     <EmbeddedResource Include="Resources\Logo_Twitter_Light.png" />
   </ItemGroup>

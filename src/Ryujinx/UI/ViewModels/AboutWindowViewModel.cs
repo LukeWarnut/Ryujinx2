@@ -17,11 +17,9 @@ namespace Ryujinx.Ava.UI.ViewModels
     {
         private Bitmap _githubLogo;
         private Bitmap _discordLogo;
-        private Bitmap _patreonLogo;
         private Bitmap _twitterLogo;
 
         private string _version;
-        private string _supporters;
 
         public Bitmap GithubLogo
         {
@@ -43,32 +41,12 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
-        public Bitmap PatreonLogo
-        {
-            get => _patreonLogo;
-            set
-            {
-                _patreonLogo = value;
-                OnPropertyChanged();
-            }
-        }
-
         public Bitmap TwitterLogo
         {
             get => _twitterLogo;
             set
             {
                 _twitterLogo = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Supporters
-        {
-            get => _supporters;
-            set
-            {
-                _supporters = value;
                 OnPropertyChanged();
             }
         }
@@ -89,7 +67,6 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             Version = Program.Version;
             UpdateLogoTheme(ConfigurationState.Instance.UI.BaseStyle.Value);
-            Dispatcher.UIThread.InvokeAsync(DownloadPatronsJson);
 
             ThemeManager.ThemeChanged += ThemeManager_ThemeChanged;
         }
@@ -108,7 +85,6 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             GithubLogo = LoadBitmap($"{basePath}Logo_GitHub_{themeSuffix}?assembly=Ryujinx.UI.Common");
             DiscordLogo = LoadBitmap($"{basePath}Logo_Discord_{themeSuffix}?assembly=Ryujinx.UI.Common");
-            PatreonLogo = LoadBitmap($"{basePath}Logo_Patreon_{themeSuffix}?assembly=Ryujinx.UI.Common");
             TwitterLogo = LoadBitmap($"{basePath}Logo_Twitter_{themeSuffix}?assembly=Ryujinx.UI.Common");
         }
 
@@ -121,29 +97,6 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             ThemeManager.ThemeChanged -= ThemeManager_ThemeChanged;
             GC.SuppressFinalize(this);
-        }
-
-        private async Task DownloadPatronsJson()
-        {
-            if (!NetworkInterface.GetIsNetworkAvailable())
-            {
-                Supporters = LocaleManager.Instance[LocaleKeys.ConnectionError];
-
-                return;
-            }
-
-            HttpClient httpClient = new();
-
-            try
-            {
-                string patreonJsonString = await httpClient.GetStringAsync("https://patreon.ryujinx.org/");
-
-                Supporters = string.Join(", ", JsonHelper.Deserialize(patreonJsonString, CommonJsonContext.Default.StringArray)) + "\n\n";
-            }
-            catch
-            {
-                Supporters = LocaleManager.Instance[LocaleKeys.ApiError];
-            }
         }
     }
 }
