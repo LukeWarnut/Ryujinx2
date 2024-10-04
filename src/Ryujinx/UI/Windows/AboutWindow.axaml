@@ -132,19 +132,6 @@
                         Background="Transparent"
                         Click="Button_OnClick"
                         CornerRadius="15"
-                        Tag="https://www.patreon.com/ryujinx"
-                        ToolTip.Tip="{locale:Locale AboutPatreonUrlTooltipMessage}">
-                        <Image Source="{Binding PatreonLogo}" />
-                    </Button>
-                    <Button
-                        MinWidth="30"
-                        MinHeight="30"
-                        MaxWidth="30"
-                        MaxHeight="30"
-                        Padding="8"
-                        Background="Transparent"
-                        Click="Button_OnClick"
-                        CornerRadius="15"
                         Tag="https://github.com/LukeWarnut/Ryujinx2"
                         ToolTip.Tip="{locale:Locale AboutGithubUrlTooltipMessage}">
                         <Image Source="{Binding GithubLogo}" />

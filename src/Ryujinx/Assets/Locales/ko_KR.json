@@ -519,7 +519,6 @@
   "AboutUrlTooltipMessage": "기본 브라우저에서 Ryujinx 웹사이트를 열려면 클릭하세요.",
   "AboutDisclaimerMessage": "Ryujinx는 닌텐도™,\n또는 그 파트너와 제휴한 바가 없습니다.",
   "AboutAmiiboDisclaimerMessage": "AmiiboAPI (www.amiiboapi.com)는\nAmiibo 에뮬레이션에 사용됩니다.",
-  "AboutPatreonUrlTooltipMessage": "기본 브라우저에서 Ryujinx Patreon 페이지를 열려면 클릭하세요.",
   "AboutGithubUrlTooltipMessage": "기본 브라우저에서 Ryujinx GitHub 페이지를 열려면 클릭하세요.",
   "AboutDiscordUrlTooltipMessage": "기본 브라우저에서 Ryujinx 디스코드 서버에 대한 초대를 열려면 클릭하세요.",
   "AboutTwitterUrlTooltipMessage": "기본 브라우저에서 Ryujinx 트위터 페이지를 열려면 클릭하세요.",
