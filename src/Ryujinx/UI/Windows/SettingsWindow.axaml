@@ -114,7 +114,6 @@
             HorizontalAlignment="Right"
             ReverseOrder="{Binding IsMacOS}">
             <Button
-                HotKey="Enter"
                 Classes="accent"
                 Content="{locale:Locale SettingsButtonOk}"
                 Command="{Binding OkButton}" />
